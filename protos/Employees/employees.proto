@@ -1,0 +1,29 @@
+// protocol buffers is a method for serializing structured data
+// in this file you define the structure of your data. data types and their relationships
+syntax = "proto3";
+
+package ruparking.employee;
+
+service EmployeeService {
+    rpc GetEmployee(EmployeeID) returns (Employee);
+    rpc GetAllEmployees(Empty) returns (Employees);
+    rpc AddEmployee(Employee) returns (Employee);
+}
+
+message Empty {}
+
+message EmployeeID {
+    int32 id = 1;
+}
+
+message Employee {
+    EmployeeID employeeID = 1;
+    string name = 2;
+    float salary = 3;
+    int32 age = 4;
+    string position = 5;
+}
+
+message Employees {
+    repeated Employee employee = 1;
+}
