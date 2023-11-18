@@ -17,7 +17,7 @@ message EmployeeID {
 }
 
 message Employee {
-    EmployeeID employeeID = 1;
+    int32 id = 1;
     string name = 2;
     float salary = 3;
     int32 age = 4;

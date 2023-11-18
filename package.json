@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "nodejsProtoc": "npx grpc_tools_node_protoc --js_out=import_style=commonjs,binary:.  protos/Employees/employees.proto",
+    "pythonProtoc": "python3 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. protos/Employees/employees.proto",
+    "protoc": "npm run nodejsProtoc && npm run pythonProtoc",
+    "start": "node Employee_client.js && python3 Employee_client_py.py && node Employee_server.js"
   },
   "keywords": [],
   "author": "",

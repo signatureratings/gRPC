@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import employees_pb2 as employees__pb2
+from protos.Employees import employees_pb2 as protos_dot_Employees_dot_employees__pb2
 
 
 class EmployeeServiceStub(object):
@@ -16,18 +16,18 @@ class EmployeeServiceStub(object):
         """
         self.GetEmployee = channel.unary_unary(
                 '/ruparking.employee.EmployeeService/GetEmployee',
-                request_serializer=employees__pb2.EmployeeID.SerializeToString,
-                response_deserializer=employees__pb2.Employee.FromString,
+                request_serializer=protos_dot_Employees_dot_employees__pb2.EmployeeID.SerializeToString,
+                response_deserializer=protos_dot_Employees_dot_employees__pb2.Employee.FromString,
                 )
         self.GetAllEmployees = channel.unary_unary(
                 '/ruparking.employee.EmployeeService/GetAllEmployees',
-                request_serializer=employees__pb2.Empty.SerializeToString,
-                response_deserializer=employees__pb2.Employees.FromString,
+                request_serializer=protos_dot_Employees_dot_employees__pb2.Empty.SerializeToString,
+                response_deserializer=protos_dot_Employees_dot_employees__pb2.Employees.FromString,
                 )
         self.AddEmployee = channel.unary_unary(
                 '/ruparking.employee.EmployeeService/AddEmployee',
-                request_serializer=employees__pb2.Employee.SerializeToString,
-                response_deserializer=employees__pb2.Employee.FromString,
+                request_serializer=protos_dot_Employees_dot_employees__pb2.Employee.SerializeToString,
+                response_deserializer=protos_dot_Employees_dot_employees__pb2.Employee.FromString,
                 )
 
 
@@ -57,18 +57,18 @@ def add_EmployeeServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'GetEmployee': grpc.unary_unary_rpc_method_handler(
                     servicer.GetEmployee,
-                    request_deserializer=employees__pb2.EmployeeID.FromString,
-                    response_serializer=employees__pb2.Employee.SerializeToString,
+                    request_deserializer=protos_dot_Employees_dot_employees__pb2.EmployeeID.FromString,
+                    response_serializer=protos_dot_Employees_dot_employees__pb2.Employee.SerializeToString,
             ),
             'GetAllEmployees': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAllEmployees,
-                    request_deserializer=employees__pb2.Empty.FromString,
-                    response_serializer=employees__pb2.Employees.SerializeToString,
+                    request_deserializer=protos_dot_Employees_dot_employees__pb2.Empty.FromString,
+                    response_serializer=protos_dot_Employees_dot_employees__pb2.Employees.SerializeToString,
             ),
             'AddEmployee': grpc.unary_unary_rpc_method_handler(
                     servicer.AddEmployee,
-                    request_deserializer=employees__pb2.Employee.FromString,
-                    response_serializer=employees__pb2.Employee.SerializeToString,
+                    request_deserializer=protos_dot_Employees_dot_employees__pb2.Employee.FromString,
+                    response_serializer=protos_dot_Employees_dot_employees__pb2.Employee.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -92,8 +92,8 @@ class EmployeeService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/ruparking.employee.EmployeeService/GetEmployee',
-            employees__pb2.EmployeeID.SerializeToString,
-            employees__pb2.Employee.FromString,
+            protos_dot_Employees_dot_employees__pb2.EmployeeID.SerializeToString,
+            protos_dot_Employees_dot_employees__pb2.Employee.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -109,8 +109,8 @@ class EmployeeService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/ruparking.employee.EmployeeService/GetAllEmployees',
-            employees__pb2.Empty.SerializeToString,
-            employees__pb2.Employees.FromString,
+            protos_dot_Employees_dot_employees__pb2.Empty.SerializeToString,
+            protos_dot_Employees_dot_employees__pb2.Employees.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -126,7 +126,7 @@ class EmployeeService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/ruparking.employee.EmployeeService/AddEmployee',
-            employees__pb2.Employee.SerializeToString,
-            employees__pb2.Employee.FromString,
+            protos_dot_Employees_dot_employees__pb2.Employee.SerializeToString,
+            protos_dot_Employees_dot_employees__pb2.Employee.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

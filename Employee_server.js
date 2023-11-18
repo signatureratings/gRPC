@@ -71,7 +71,7 @@ server.addService(ruparking.employee.EmployeeService.service, {
             else{
                 const employees = {
                     employee: rows.map(row => ({
-                      employeeID: { id: row.id },
+                      id: row.id ,
                       name: row.name,
                       salary: row.salary,
                       age: row.age,
@@ -96,7 +96,6 @@ server.addService(ruparking.employee.EmployeeService.service, {
           
             }
             else{
-                employee.id = this.lastID;
                 callback(null, employee);
                 }
         });

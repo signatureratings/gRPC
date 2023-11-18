@@ -18,17 +18,10 @@ const client = new ruparking.employee.EmployeeService(
 );
 
 // Make a gRPC request
-const employeeId = { id: 123 };
-client.GetEmployee(employeeId, (error, response) => {
-  if (error) {
-    console.error('Error:', error.message);
-    return;
-  }
-  console.log('Employee:', response);
-});
+const employeeId = { id: 1 };
 
 client.AddEmployee({
-    id: 123,
+    id: 1,
     name: 'John Doe',
     age: 30,
     salary: 35000,
@@ -39,6 +32,14 @@ client.AddEmployee({
       return;
     }
     console.log('Employee:', response);
+});
+
+client.GetEmployee(employeeId, (error, response) => {
+  if (error) {
+    console.error('Error:', error.message);
+    return;
+  }
+  console.log('Employee:', response);
 });
 
 client.GetAllEmployees({}, (error, response) => {

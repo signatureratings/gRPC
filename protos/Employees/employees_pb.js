@@ -1,4 +1,4 @@
-// source: employees.proto
+// source: protos/Employees/employees.proto
 /**
  * @fileoverview
  * @enhanceable
@@ -372,7 +372,7 @@ proto.ruparking.employee.Employee.prototype.toObject = function(opt_includeInsta
  */
 proto.ruparking.employee.Employee.toObject = function(includeInstance, msg) {
   var f, obj = {
-    employeeid: (f = msg.getEmployeeid()) && proto.ruparking.employee.EmployeeID.toObject(includeInstance, f),
+    id: jspb.Message.getFieldWithDefault(msg, 1, 0),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     salary: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
     age: jspb.Message.getFieldWithDefault(msg, 4, 0),
@@ -414,9 +414,8 @@ proto.ruparking.employee.Employee.deserializeBinaryFromReader = function(msg, re
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.ruparking.employee.EmployeeID;
-      reader.readMessage(value,proto.ruparking.employee.EmployeeID.deserializeBinaryFromReader);
-      msg.setEmployeeid(value);
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setId(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
@@ -463,12 +462,11 @@ proto.ruparking.employee.Employee.prototype.serializeBinary = function() {
  */
 proto.ruparking.employee.Employee.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getEmployeeid();
-  if (f != null) {
-    writer.writeMessage(
+  f = message.getId();
+  if (f !== 0) {
+    writer.writeInt32(
       1,
-      f,
-      proto.ruparking.employee.EmployeeID.serializeBinaryToWriter
+      f
     );
   }
   f = message.getName();
@@ -503,39 +501,20 @@ proto.ruparking.employee.Employee.serializeBinaryToWriter = function(message, wr
 
 
 /**
- * optional EmployeeID employeeID = 1;
- * @return {?proto.ruparking.employee.EmployeeID}
+ * optional int32 id = 1;
+ * @return {number}
  */
-proto.ruparking.employee.Employee.prototype.getEmployeeid = function() {
-  return /** @type{?proto.ruparking.employee.EmployeeID} */ (
-    jspb.Message.getWrapperField(this, proto.ruparking.employee.EmployeeID, 1));
+proto.ruparking.employee.Employee.prototype.getId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
- * @param {?proto.ruparking.employee.EmployeeID|undefined} value
- * @return {!proto.ruparking.employee.Employee} returns this
-*/
-proto.ruparking.employee.Employee.prototype.setEmployeeid = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
+ * @param {number} value
  * @return {!proto.ruparking.employee.Employee} returns this
  */
-proto.ruparking.employee.Employee.prototype.clearEmployeeid = function() {
-  return this.setEmployeeid(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.ruparking.employee.Employee.prototype.hasEmployeeid = function() {
-  return jspb.Message.getField(this, 1) != null;
+proto.ruparking.employee.Employee.prototype.setId = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
 };
 
 
